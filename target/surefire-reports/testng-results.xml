@@ -2,12 +2,12 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="com.qainfotech.hris.loginNGTest" duration-ms="51" started-at="2018-08-18T14:08:47Z" finished-at="2018-08-18T14:08:47Z">
+  <suite name="com.qainfotech.hris.loginNGTest" duration-ms="30" started-at="2018-08-20T17:45:09Z" finished-at="2018-08-20T17:45:09Z">
     <groups>
     </groups>
-    <test name="Command line test" duration-ms="51" started-at="2018-08-18T14:08:47Z" finished-at="2018-08-18T14:08:47Z">
+    <test name="Command line test" duration-ms="30" started-at="2018-08-20T17:45:09Z" finished-at="2018-08-20T17:45:09Z">
       <class name="com.qainfotech.hris.loginNGTest">
-        <test-method status="PASS" signature="testSomeMethod()[pri:0, instance:com.qainfotech.hris.loginNGTest@6bdf28bb]" name="testSomeMethod" duration-ms="8" started-at="2018-08-18T19:38:47Z" finished-at="2018-08-18T19:38:47Z">
+        <test-method status="PASS" signature="testSomeMethod()[pri:0, instance:com.qainfotech.hris.loginNGTest@6bdf28bb]" name="testSomeMethod" duration-ms="8" started-at="2018-08-20T23:15:09Z" finished-at="2018-08-20T23:15:09Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testSomeMethod -->

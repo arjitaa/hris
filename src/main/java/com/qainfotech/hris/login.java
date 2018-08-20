@@ -6,6 +6,7 @@
 package com.qainfotech.hris;
 
 import java.util.Arrays;
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
 import javax.swing.Action;
 import org.openqa.selenium.By;
@@ -54,6 +55,10 @@ public class login {
    else{
        System.out.println("Page is not loaded completely timesheet");
    }
+    Thread.sleep(1000);
+    driver.findElement(By.cssSelector("#hamburger")).click();
+    driver.findElement(By.xpath("//a[@title='Time']")).click();
+   
     // scrolling down
     JavascriptExecutor js2=(JavascriptExecutor)driver;
     WebElement element=driver.findElement(By.xpath("//div[@id='dv_2018-08-10']"));
@@ -62,15 +67,22 @@ public class login {
      
     Thread.sleep(5000);
     // punch details
+    
+    
+    Date date=new Date();
+    System.out.println (date.toString());
+    
     Actions hover=new Actions(driver);
-    hover.moveToElement(driver.findElement(By.xpath("//div[@id='dv_2018-08-17']"))).build().perform();
+   // hover.moveToElement(driver.findElement(By.xpath("//div[@id='dv_2018-08-17']"))).build().perform();
+    hover.moveToElement(driver.findElement(By.xpath("//span[@class='date ng-binding']"))).build().perform();
     
    //driver.findElement(By.xpath("//div[@id='dv_2018-08-17']//div[1]//div[2]//ul//li[2]//div[2]//div[1]//span[2]//b"));
-    WebElement punch_details= driver.findElement(By.xpath("//b[contains(text(),'09:51:00, 13:45:00, 14:04:00, 18:36:00, 18:38:00, 18:41:00')]"));
-    String details= punch_details.getText();
+   // WebElement punch_details= driver.findElement(By.xpath("//b[contains(text(),'09:51:00, 13:45:00, 14:04:00, 18:36:00, 18:38:00, 18:41:00')]"));
+    WebElement punch_details1=driver.findElement(By.xpath("//b[contains(text(), 'Punches:')]"));
+    String details= punch_details1.getText();
    // String arr[] = details.split(",");
     int string_length=details.length();
-    String excl_punch= details.substring(9,67);
+    String excl_punch= details.substring(9,string_length-1);
     System.out.println(string_length);
     System.out.println(excl_punch);
     String num_punches[]=excl_punch.split(",");
@@ -108,7 +120,11 @@ public class login {
     
     
     driver.findElement(By.xpath("//a[@title='Leave']")).click();
-    driver.findElement(By.xpath("//li[@class='treeview  active']//ul//li[1]//a//span[1]")).click();
+    WebDriverWait wait= new WebDriverWait(driver,10);
+    WebElement Leave_Summary=wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//li[@class='treeview  active']//ul//li[1]//a//span[1]")));
+    Leave_Summary.click();
+//    Thread.sleep(1000);
+//    driver.findElement(By.xpath("//li[@class='treeview  active']//ul//li[1]//a//span[1]")).click();
     driver.findElement(By.xpath("//li[@class='treeview  active']//ul[1]//li[1]//ul//li/a")).click();
     //driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     
@@ -125,7 +141,7 @@ public class login {
     driver.switchTo().frame("rightMenu");
     
     
-    WebDriverWait wait= new WebDriverWait(driver,10);
+    WebDriverWait wait1= new WebDriverWait(driver,10);
     WebElement PTO=wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//table[@border='0']//tbody[1]//tr[1]//td[5]")));
    //WebElement PTO = driver.findElement(By.xpath("//table[@border='0']//tbody[1]//tr[1]//td[5]"));
    String leaves= PTO.getText();
