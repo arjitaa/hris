@@ -5,6 +5,7 @@
  */
 package com.qainfotech.hris;
 
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
@@ -70,11 +71,18 @@ public class login {
     
     
     Date date=new Date();
-    System.out.println (date.toString());
+    System.out.println (date);
+    SimpleDateFormat sdf= new SimpleDateFormat("yyyy--MM-dd");
+          String currentDate=sdf.format(date);
+          System.out.println(currentDate);
+          
+          String date1=currentDate.substring(0, 2);
+          System.out.println(date1);
+    
     
     Actions hover=new Actions(driver);
    // hover.moveToElement(driver.findElement(By.xpath("//div[@id='dv_2018-08-17']"))).build().perform();
-    hover.moveToElement(driver.findElement(By.xpath("//span[@class='date ng-binding']"))).build().perform();
+    hover.moveToElement(driver.findElement(By.xpath("//span[@class='date ng-binding']."))).build().perform();
     
    //driver.findElement(By.xpath("//div[@id='dv_2018-08-17']//div[1]//div[2]//ul//li[2]//div[2]//div[1]//span[2]//b"));
    // WebElement punch_details= driver.findElement(By.xpath("//b[contains(text(),'09:51:00, 13:45:00, 14:04:00, 18:36:00, 18:38:00, 18:41:00')]"));
