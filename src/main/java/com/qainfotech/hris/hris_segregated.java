@@ -6,11 +6,10 @@
 package com.qainfotech.hris;
 
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
-import javax.swing.Action;
 import org.openqa.selenium.By;
+import static org.openqa.selenium.By.xpath;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -23,8 +22,22 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  *
  * @author Arjita
  */
-public class login {
+public class hris_segregated {
+    /*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+
+/**
+ *
+ * @author Arjita
+ */
+
     public static void main(String[]args) throws InterruptedException{
+        
+    WebDriver;
     System.setProperty("webdriver.chrome.driver", "C:\\driver\\chromedriver_win32\\chromedriver.exe");
     WebDriver driver= new ChromeDriver();
     driver.manage().window().maximize();
@@ -57,7 +70,8 @@ public class login {
        System.out.println("Page is not loaded completely timesheet");
    }
     Thread.sleep(1000);
-    driver.findElement(By.cssSelector("#hamburger")).click();
+   // element(By.cssSelector("#hamburger")).click();
+    click(element("//a[@id='hamburger']" , "xpath"));
     driver.findElement(By.xpath("//a[@title='Time']")).click();
    
     // scrolling down
@@ -158,5 +172,20 @@ public class login {
     
     
     }
+    public WebElement element(String locator,String locatortype){
+    return driver.findElement(By.xpath(locator));
     
+}
+    public void click(WebElement ele){
+        ele.click();
+        System.out.println("clicked on element" +ele);
+    }
+    
+    public static WebDriver getDriver(String browser){
+    System.setProperty("webdriver.chrome.driver", "C:\\driver\\chromedriver_win32\\chromedriver.exe");
+    return new ChromeDriver();
+ 
+ }
+
+  
 }
