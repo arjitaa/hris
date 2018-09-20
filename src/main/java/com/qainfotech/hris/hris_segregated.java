@@ -34,12 +34,12 @@ public class hris_segregated {
  *
  * @author Arjita
  */
-
+    static WebDriver driver;
     public static void main(String[]args) throws InterruptedException{
         
-    WebDriver;
+  
     System.setProperty("webdriver.chrome.driver", "C:\\driver\\chromedriver_win32\\chromedriver.exe");
-    WebDriver driver= new ChromeDriver();
+    driver= new ChromeDriver();
     driver.manage().window().maximize();
     driver.get("https://hris.qainfotech.com/login.php");
     driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
@@ -58,6 +58,8 @@ public class hris_segregated {
     driver.findElement(By.xpath("//input[@type='text']")).sendKeys("arjitaagarwal");
     driver.findElement(By.xpath("//input[@type='password']")).sendKeys("Qait@12345");
     driver.findElement(By.xpath("//input[@value='Sign In']")).click();
+    
+    click(element("//input[@value='Sign In']","xpath"));
    // driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
    
    // verified page is loaded completely
@@ -71,7 +73,8 @@ public class hris_segregated {
    }
     Thread.sleep(1000);
    // element(By.cssSelector("#hamburger")).click();
-    click(element("//a[@id='hamburger']" , "xpath"));
+    WebElement element("//a[@id='hamburger']" , "xpath").
+    
     driver.findElement(By.xpath("//a[@title='Time']")).click();
    
     // scrolling down
