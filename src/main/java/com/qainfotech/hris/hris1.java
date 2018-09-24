@@ -26,7 +26,7 @@ public class hris1 {
     static String pw_field="//input[@type='password']";
     static String password="Qait@123456";
     static String sign_inbutton="//input[@value='Sign In']";
-    static String punch_indetails="(//h1[contains(text(),'"sdf.format(date1)"')]/..//b)[2]";   //20-09-2018 09/20/2018
+    static String punch_indetails="(//h1[contains(text(),'dynamic')]/..//b)[2]";   //20-09-2018 09/20/2018 sdf.format(date1)
     //(//h1[contains(text(),'"+dtf.format(now)+"')]/..//b)[2]"
     static String leave_expand="#hamburger";
     static String leave_click="//a[@title='Leave']";
@@ -82,8 +82,7 @@ public class hris1 {
           
 //          String date1=currentDate.substring(0, 2);
 //          System.out.println(date1);
-          
-         String punch_details= driver.findElement(By.xpath(punch_indetails)).getAttribute(punch_indetails);
+         String punch_details= driver.findElement(By.xpath(elementReplace(punch_indetails,sdf.format(date1)))).getAttribute(punch_indetails);
          
          System.out.println(punch_details);
     
@@ -131,6 +130,10 @@ public class hris1 {
     
     }
     private String currentDate;
+    
+    public static String elementReplace(String element, String replacement){
+    	return element.replace("dynamic", replacement);
+    }
     
 }
 
