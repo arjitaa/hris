@@ -9,7 +9,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
-import static org.openqa.selenium.By.xpath;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -33,12 +32,15 @@ public class hris_segregated {
 /**
  *
  * @author Arjita
- */
+ */ 
 
+	static String  inputUsername = "//input[@type='text']"; 
+	static String username="arjitaagarwal";
+	
     public static void main(String[]args) throws InterruptedException{
         
-    WebDriver;
-    System.setProperty("webdriver.chrome.driver", "C:\\driver\\chromedriver_win32\\chromedriver.exe");
+    
+    System.setProperty("webdriver.chrome.driver", "C:\\Users\\arjitaagarwal\\Downloads\\chromedriver_win32\\chromedriver.exe");
     WebDriver driver= new ChromeDriver();
     driver.manage().window().maximize();
     driver.get("https://hris.qainfotech.com/login.php");
@@ -53,16 +55,18 @@ public class hris_segregated {
     else{
         System.out.println("Title is incorrect");
     }
-    
+   
     // Login HRIS
-    driver.findElement(By.xpath("//input[@type='text']")).sendKeys("arjitaagarwal");
-    driver.findElement(By.xpath("//input[@type='password']")).sendKeys("Qait@12345");
-    driver.findElement(By.xpath("//input[@value='Sign In']")).click();
-   // driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+    
+
+      driver.findElement(By.xpath(inputUsername)).sendKeys(username);
+      driver.findElement(By.xpath("//input[@type='password']")).sendKeys("Qait@12345");
+      driver.findElement(By.xpath("//input[@value='Sign In']")).click();
+      driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
    
    // verified page is loaded completely
    JavascriptExecutor js1=(JavascriptExecutor)driver;
-   boolean status1= js1.executeScript("return document.readyState").toString().equals("complete");
+   boolean status1= js1.executeScript("return document.readyState", args).toString().equals("complete");
    if(status1){
        System.out.println("Page is loaded completely timesheet");
    }
@@ -71,7 +75,7 @@ public class hris_segregated {
    }
     Thread.sleep(1000);
    // element(By.cssSelector("#hamburger")).click();
-    click(element("//a[@id='hamburger']" , "xpath"));
+    driver.findElement(By.xpath("//a[@id='hamburger']"));
     driver.findElement(By.xpath("//a[@title='Time']")).click();
    
     // scrolling down
@@ -172,20 +176,31 @@ public class hris_segregated {
     
     
     }
+    
+   
+    
     public WebElement element(String locator,String locatortype){
-    return driver.findElement(By.xpath(locator));
+    	By ele;
+    	switch(locatortype){
+    	case "xpath":
+    	ele=By.xpath(locator);
+    	break;
+    	switch(locatortype){
+    	case "css":
+    	ele=By.cssSelector(locator);
+    	break;
+    	}
+    	return driver.findElement(By.xpath(locator)); 
     
-}
-    public void click(WebElement ele){
-        ele.click();
-        System.out.println("clicked on element" +ele);
     }
-    
-    public static WebDriver getDriver(String browser){
-    System.setProperty("webdriver.chrome.driver", "C:\\driver\\chromedriver_win32\\chromedriver.exe");
-    return new ChromeDriver();
- 
- }
+        public void click(WebElement ele){
+            ele.click();
+            System.out.println("clicked on element" +ele);
+        }
+        
+        public static WebDriver getDriver(String browser){
+        System.setProperty("webdriver.chrome.driver", "C:\\Users\\arjitaagarwal\\Downloads\\chromedriver_win32\\chromedriver.exe");
+        return new ChromeDriver();
 
-  
+        }
 }

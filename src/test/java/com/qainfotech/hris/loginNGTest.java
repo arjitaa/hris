@@ -19,6 +19,7 @@ public class loginNGTest {
 
     @Test
     public void testSomeMethod() {
+    	
     }
     
 }

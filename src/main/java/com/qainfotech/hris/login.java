@@ -9,7 +9,9 @@ import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
+
 import javax.swing.Action;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -18,14 +20,17 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.Test;
 
 /**
  *
  * @author Arjita
  */
 public class login {
-    public static void main(String[]args) throws InterruptedException{
-    System.setProperty("webdriver.chrome.driver", "C:\\driver\\chromedriver_win32\\chromedriver.exe");
+  //  public static void main(String[]args) throws InterruptedException{
+    @Test
+    public void test1(){
+	System.setProperty("webdriver.chrome.driver", "C:\\driver\\chromedriver_win32\\chromedriver.exe");
     WebDriver driver= new ChromeDriver();
     driver.manage().window().maximize();
     driver.get("https://hris.qainfotech.com/login.php");
@@ -56,7 +61,12 @@ public class login {
    else{
        System.out.println("Page is not loaded completely timesheet");
    }
-    Thread.sleep(1000);
+    try {
+		Thread.sleep(1000);
+	} catch (InterruptedException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
     driver.findElement(By.cssSelector("#hamburger")).click();
     driver.findElement(By.xpath("//a[@title='Time']")).click();
    
@@ -66,7 +76,12 @@ public class login {
     js2.executeScript("arguments[0].scrollIntoView(true);",element);
     System.out.println(element.getText());
      
-    Thread.sleep(5000);
+    try {
+		Thread.sleep(5000);
+	} catch (InterruptedException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
     // punch details
     
     
