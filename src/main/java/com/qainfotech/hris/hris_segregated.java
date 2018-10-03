@@ -32,6 +32,7 @@ public class hris_segregated {
 /**
  *
  * @author Arjita
+<<<<<<< HEAD
  */ 
 
 	static String  inputUsername = "//input[@type='text']"; 
@@ -42,6 +43,15 @@ public class hris_segregated {
     
     System.setProperty("webdriver.chrome.driver", "C:\\Users\\arjitaagarwal\\Downloads\\chromedriver_win32\\chromedriver.exe");
     WebDriver driver= new ChromeDriver();
+=======
+ */
+    static WebDriver driver;
+    public static void main(String[]args) throws InterruptedException{
+        
+  
+    System.setProperty("webdriver.chrome.driver", "C:\\driver\\chromedriver_win32\\chromedriver.exe");
+    driver= new ChromeDriver();
+>>>>>>> 9fe24b2ec60320771d47b08b7266712c9520fe93
     driver.manage().window().maximize();
     driver.get("https://hris.qainfotech.com/login.php");
     driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
@@ -57,12 +67,21 @@ public class hris_segregated {
     }
    
     // Login HRIS
+<<<<<<< HEAD
     
 
       driver.findElement(By.xpath(inputUsername)).sendKeys(username);
       driver.findElement(By.xpath("//input[@type='password']")).sendKeys("Qait@12345");
       driver.findElement(By.xpath("//input[@value='Sign In']")).click();
       driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+=======
+    driver.findElement(By.xpath("//input[@type='text']")).sendKeys("arjitaagarwal");
+    driver.findElement(By.xpath("//input[@type='password']")).sendKeys("Qait@12345");
+    driver.findElement(By.xpath("//input[@value='Sign In']")).click();
+    
+    click(element("//input[@value='Sign In']","xpath"));
+   // driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+>>>>>>> 9fe24b2ec60320771d47b08b7266712c9520fe93
    
    // verified page is loaded completely
    JavascriptExecutor js1=(JavascriptExecutor)driver;
@@ -75,7 +94,12 @@ public class hris_segregated {
    }
     Thread.sleep(1000);
    // element(By.cssSelector("#hamburger")).click();
+<<<<<<< HEAD
     driver.findElement(By.xpath("//a[@id='hamburger']"));
+=======
+    WebElement element("//a[@id='hamburger']" , "xpath").
+    
+>>>>>>> 9fe24b2ec60320771d47b08b7266712c9520fe93
     driver.findElement(By.xpath("//a[@title='Time']")).click();
    
     // scrolling down
